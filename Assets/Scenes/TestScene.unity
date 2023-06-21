@@ -259,7 +259,7 @@ Canvas:
   m_GameObject: {fileID: 677227612}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1777574723}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2313,7 +2313,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 50, y: 100}
+  m_CellSize: {x: 75, y: 75}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
@@ -2437,6 +2437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a30f11324bc11f49964d519831691f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapManager: {fileID: 1949388541}
+  BaseUISprite: {fileID: 4307244167373109338, guid: 78dc50c9536775b48a6886d5529112aa, type: 3}
 --- !u!1 &1312416888
 GameObject:
   m_ObjectHideFlags: 0

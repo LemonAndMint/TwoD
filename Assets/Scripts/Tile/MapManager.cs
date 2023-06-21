@@ -33,28 +33,34 @@ public class MapManager : MonoBehaviour
 
         foreach(GameObject tileImage in tileImageList){
 
-            //tempGameObject = new GameObject(tileImage.name); //Bos bir obje yaratir klonlamaz
             tempGameObject = Instantiate(tileImage);
             tempGameObject.transform.SetParent(itemUIGrid.transform);
         }
 
     }
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    public bool placeTower(GameObject towerGameObject, Vector2 placingPoint){
 
-            //Vector3Int gridPosition = map.WorldToCell(mousePosition);
-            //TileBase clickedTile = map.GetTile(gridPosition);
+        Vector2 placingVector2 = Camera.main.ScreenToWorldPoint(placingPoint);
+        Vector3Int gridIntPosition = map.WorldToCell(placingVector2);
+        TileData selectedTileData = getTileData(gridIntPosition);
+
+        if(selectedTileData != null && selectedTileData.canPlaceTower == true){
+
+            /* 
+             * Konum icin Vector3Int kullanildigi icin ve TileMap offset degeri 0.5f e onceden ayarlandigindan
+             * gridIntPosition direkt olarak oyun icindeki tile larin konumunu alamiyor. Asagidaki satirda ekstradan 
+             * +0.5f lik bir ekleme yapilir. \ Corpyr. 
+             */
+            
+            Vector3 gridPositioninWorld = gridIntPosition + Vector3.one * 0.5f; 
+            towerGameObject.transform.position = gridPositioninWorld;
+
+            return true;
 
         }
-    }
 
-    private void placeTower(){
-
-
+        return false;
 
     }
 
@@ -64,7 +70,11 @@ public class MapManager : MonoBehaviour
 
         if (tile == null)
             return null;
-        else
+
+        if(dataFromTiles.ContainsKey(tile)){
             return dataFromTiles[tile];
+        }
+
+        return null;
     }
 }

@@ -10,4 +10,6 @@ public class TileData : ScriptableObject
 
     public bool isWalkable; 
 
+    public bool canPlaceTower;
+
 }

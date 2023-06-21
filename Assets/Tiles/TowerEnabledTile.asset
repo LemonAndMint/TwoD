@@ -15,3 +15,4 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: 4a45663e1062be8428a86d4581659c9d, type: 2}
   isWalkable: 0
+  canPlaceTower: 1
