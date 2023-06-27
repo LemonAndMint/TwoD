@@ -15,7 +15,7 @@ public class UIImageInput : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData) 
     {
 
-        inputManager.attachSpritetoCrusor(GetComponent<Image>().sprite);
+        inputManager.attachSpritetoCrusor(GetComponent<Image>().sprite, this.gameObject.name);
     
     }
 

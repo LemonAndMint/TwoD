@@ -9,8 +9,12 @@ public class InputManager : MonoBehaviour
     public MapManager mapManager;
 
     [SerializeField]
+    private List<GameObject> tileImageList;
+
+    [SerializeField]
     private GameObject BaseUISprite;
     private GameObject AttachedSpriteGameObject;
+    private string towerName;
     private Vector2 crusorPosInScreen;
     private Vector3 crusorPosInGame;
 
@@ -22,6 +26,14 @@ public class InputManager : MonoBehaviour
             instance = this; //Classin singleton kismi \ Corpyr.
 
             _setSpriteNull();
+
+            GameObject tempGameObject;
+
+            foreach(GameObject tileImage in tileImageList){
+
+                tempGameObject = Instantiate(tileImage);
+                tempGameObject.transform.SetParent(mapManager.itemUIGrid.transform);
+            }
         
         }
 
@@ -34,11 +46,12 @@ public class InputManager : MonoBehaviour
         _checkButtonClicks();
     }
 
-    public void attachSpritetoCrusor(Sprite sprite){
+    public void attachSpritetoCrusor(Sprite sprite, string towerName){
 
         AttachedSpriteGameObject = Instantiate(BaseUISprite);
         AttachedSpriteGameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-    
+        this.towerName = towerName;
+
     }
 
     private void _syncSpriteAndCrusor(){
@@ -54,23 +67,13 @@ public class InputManager : MonoBehaviour
 
     }
 
-    private void _checkPlacableTiles(){
-
-        if(AttachedSpriteGameObject != null){
-
-            
-
-        }
-
-    }
-
     private void _checkButtonClicks(){
 
         if(Input.GetMouseButtonDown(0)){
 
             if(AttachedSpriteGameObject != null){
 
-                bool isPlaced = mapManager.placeTower(AttachedSpriteGameObject, crusorPosInScreen);
+                bool isPlaced = mapManager.placeTower(towerName, crusorPosInScreen);
                 
                 if(isPlaced) _setSpriteNull();
             }
@@ -81,6 +84,7 @@ public class InputManager : MonoBehaviour
 
     private void _setSpriteNull(){
 
+        if(AttachedSpriteGameObject != null) { Destroy(AttachedSpriteGameObject.gameObject); }
         AttachedSpriteGameObject = null;
 
     }

@@ -1,19 +1,18 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+
+using System.Linq;
 public class MapManager : MonoBehaviour
 {
-    [SerializeField]
-    private Tilemap map;
+    public Tilemap map;
 
     [SerializeField]
     private List<TileData> tileDatas;
-    [SerializeField]
-    private List<GameObject> tileImageList;
-    [SerializeField]
-    private GridLayoutGroup itemUIGrid;
+    public GameObject towerPrefabs;
+    public GridLayoutGroup itemUIGrid;
 
     private Dictionary<TileBase, TileData> dataFromTiles;
 
@@ -29,21 +28,15 @@ public class MapManager : MonoBehaviour
             }
         }
 
-        GameObject tempGameObject;
-
-        foreach(GameObject tileImage in tileImageList){
-
-            tempGameObject = Instantiate(tileImage);
-            tempGameObject.transform.SetParent(itemUIGrid.transform);
-        }
-
     }
 
-    public bool placeTower(GameObject towerGameObject, Vector2 placingPoint){
+    public bool placeTower(string towerName, Vector2 placingPoint){
 
         Vector2 placingVector2 = Camera.main.ScreenToWorldPoint(placingPoint);
         Vector3Int gridIntPosition = map.WorldToCell(placingVector2);
         TileData selectedTileData = getTileData(gridIntPosition);
+
+        GameObject tempTower;
 
         if(selectedTileData != null && selectedTileData.canPlaceTower == true){
 
@@ -52,9 +45,11 @@ public class MapManager : MonoBehaviour
              * gridIntPosition direkt olarak oyun icindeki tile larin konumunu alamiyor. Asagidaki satirda ekstradan 
              * +0.5f lik bir ekleme yapilir. \ Corpyr. 
              */
+
+            tempTower = Instantiate(towerPrefabs);
             
             Vector3 gridPositioninWorld = gridIntPosition + Vector3.one * 0.5f; 
-            towerGameObject.transform.position = gridPositioninWorld;
+            tempTower.transform.position = gridPositioninWorld;
 
             return true;
 
