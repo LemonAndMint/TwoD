@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ba21b346ccb654b9992212016a797d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerName: Basic Tower
+  towerPrice: 5
   towerRange: 5
   towerDamage: 10
   towerReloadSec: 1

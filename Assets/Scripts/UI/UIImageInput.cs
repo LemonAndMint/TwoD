@@ -6,16 +6,20 @@ using UnityEngine.EventSystems;
 
 public class UIImageInput : MonoBehaviour, IPointerClickHandler
 {
+    public GameObject towerPrefab; 
+
     private InputManager inputManager;
 
     private void Awake() {
+
         inputManager = FindObjectOfType<InputManager>();
+
     }
 
     public void OnPointerClick(PointerEventData eventData) 
     {
 
-        inputManager.attachSpritetoCrusor(GetComponent<Image>().sprite, this.gameObject.name);
+        inputManager.attachSpritetoCrusor(GetComponent<Image>().sprite, towerPrefab);
     
     }
 

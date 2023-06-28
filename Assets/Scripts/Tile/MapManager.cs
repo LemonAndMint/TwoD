@@ -11,7 +11,6 @@ public class MapManager : MonoBehaviour
 
     [SerializeField]
     private List<TileData> tileDatas;
-    public GameObject towerPrefabs;
     public GridLayoutGroup itemUIGrid;
 
     private Dictionary<TileBase, TileData> dataFromTiles;
@@ -30,7 +29,8 @@ public class MapManager : MonoBehaviour
 
     }
 
-    public bool placeTower(string towerName, Vector2 placingPoint){
+    
+    public bool placeTower(GameObject towerPrefab, Vector2 placingPoint){
 
         Vector2 placingVector2 = Camera.main.ScreenToWorldPoint(placingPoint);
         Vector3Int gridIntPosition = map.WorldToCell(placingVector2);
@@ -46,7 +46,7 @@ public class MapManager : MonoBehaviour
              * +0.5f lik bir ekleme yapilir. \ Corpyr. 
              */
 
-            tempTower = Instantiate(towerPrefabs);
+            tempTower = Instantiate(towerPrefab);
             
             Vector3 gridPositioninWorld = gridIntPosition + Vector3.one * 0.5f; 
             tempTower.transform.position = gridPositioninWorld;

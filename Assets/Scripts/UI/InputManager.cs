@@ -14,7 +14,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private GameObject BaseUISprite;
     private GameObject AttachedSpriteGameObject;
-    private string towerName;
+    private GameObject _placingTowerPrefab;
     private Vector2 crusorPosInScreen;
     private Vector3 crusorPosInGame;
 
@@ -46,11 +46,11 @@ public class InputManager : MonoBehaviour
         _checkButtonClicks();
     }
 
-    public void attachSpritetoCrusor(Sprite sprite, string towerName){
+    public void attachSpritetoCrusor(Sprite sprite, GameObject towerPrefab){
 
         AttachedSpriteGameObject = Instantiate(BaseUISprite);
         AttachedSpriteGameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-        this.towerName = towerName;
+        _placingTowerPrefab = towerPrefab;
 
     }
 
@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour
 
             if(AttachedSpriteGameObject != null){
 
-                bool isPlaced = mapManager.placeTower(towerName, crusorPosInScreen);
+                bool isPlaced = mapManager.placeTower(_placingTowerPrefab, crusorPosInScreen);
                 
                 if(isPlaced) _setSpriteNull();
             }
