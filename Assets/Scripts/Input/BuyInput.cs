@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIImageInput : MonoBehaviour, IPointerClickHandler
+public class BuyInput : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject towerPrefab; 
+    public TowerScriptableObject towerSO; 
 
     private InputManager inputManager;
 
@@ -19,7 +19,7 @@ public class UIImageInput : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData) 
     {
 
-        inputManager.attachSpritetoCrusor(GetComponent<Image>().sprite, towerPrefab);
+        inputManager.BuyInput(towerSO);
     
     }
 
