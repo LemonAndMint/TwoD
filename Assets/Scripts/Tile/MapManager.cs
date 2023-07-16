@@ -13,6 +13,8 @@ public class MapManager : MonoBehaviour
     private List<TileData> tileDatas;
 
     private Dictionary<TileBase, TileData> dataFromTiles;
+    private Dictionary<Vector3Int, bool> isTowerPresented;
+
 
     private void Awake()
     {
@@ -25,6 +27,34 @@ public class MapManager : MonoBehaviour
                 dataFromTiles.Add(tile, tileData);
             }
         }
+
+        _prepPlaceableTileCoordinates(); // her zaman icin tiledatalar eklendikten sonra eklenmeli \Corpyr.
+
+    }
+
+    private void _prepPlaceableTileCoordinates(){
+
+        isTowerPresented = new Dictionary<Vector3Int, bool>();
+        TileData currentTileData = null;
+        Vector3Int currentCoordinates;
+
+        //Debug.Log("center:" + map.localBounds.center + "   " + "max:" + map.localBounds.max + "    " + "min:" + map.localBounds.min ); //#TODO
+        
+        for(int x = (int)map.localBounds.min.x; x < map.localBounds.max.x; x++ ){
+
+            for(int y = (int)map.localBounds.min.y; y < map.localBounds.max.y; y++ ){
+
+                currentCoordinates = new Vector3Int(x, y, 0);
+                currentTileData = getTileData(currentCoordinates);
+
+                if(currentTileData != null && currentTileData.canPlaceTower == true){ isTowerPresented.Add(currentCoordinates, false); }
+
+            }
+
+        }
+
+
+        //Debug.Log(isTowerPresented.Count);
 
     }
 
@@ -39,7 +69,7 @@ public class MapManager : MonoBehaviour
 
         GameObject tempTower;
 
-        if(selectedTileData != null && selectedTileData.canPlaceTower == true){
+        if(selectedTileData != null && selectedTileData.canPlaceTower == true && isTileEmpty(gridIntPosition) == true){
 
             /* 
              * Konum icin Vector3Int kullanildigi icin ve TileMap offset degeri 0.5f e onceden ayarlandigindan
@@ -51,6 +81,21 @@ public class MapManager : MonoBehaviour
             
             Vector3 gridPositioninWorld = gridIntPosition + Vector3.one * 0.5f; 
             tempTower.transform.position = gridPositioninWorld;
+
+            isTowerPresented[gridIntPosition] = true;
+
+            return true;
+
+        }
+
+        return false;
+
+    }
+
+    private bool isTileEmpty(Vector3Int tilePosition){
+
+        
+        if(isTowerPresented.ContainsKey(tilePosition) != false && isTowerPresented[tilePosition] == false){
 
             return true;
 

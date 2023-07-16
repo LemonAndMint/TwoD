@@ -9,4 +9,5 @@ public class TowerStats : MonoBehaviour
     public float towerRange;
     public float towerDamage;
     public float towerReloadSec;
+    public GameObject bulletPrefab;
 }

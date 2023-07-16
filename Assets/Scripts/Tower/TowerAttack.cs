@@ -54,7 +54,7 @@ public class TowerAttack : MonoBehaviour
         if( _isInRange(tempEnemy) ){
 
             targetEnemy = tempEnemy;
-            targetEnemy.GetComponent<EnemyHealth>().TakeDamage(towerStats.towerDamage);
+            targetEnemy.GetComponent<EnemyHealth>().TakeDamage(towerStats.towerDamage); //#TODO Mermi atesle
 
         }
 
