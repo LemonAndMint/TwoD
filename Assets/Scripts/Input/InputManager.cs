@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private GameObject _BaseUISpritePrefab;
     private GameObject _AttachedSpriteGameObject;
-    private TowerScriptableObject _placingTowerSO;
+    private TowerData _placingTowerSO;
     private Vector3 _crusorPosInGame;
 
 
@@ -35,7 +35,7 @@ public class InputManager : MonoBehaviour
         _checkButtonClicks();
     }
 
-    public void BuyInput(TowerScriptableObject towerSO){
+    public void BuyInput(TowerData towerSO){
 
         _AttachedSpriteGameObject = Instantiate(_BaseUISpritePrefab);
         _AttachedSpriteGameObject.GetComponent<SpriteRenderer>().sprite = towerSO.TowerUISprite;

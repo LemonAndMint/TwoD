@@ -2755,13 +2755,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6517e6085aac934ebaa31eeaf9d8afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPointGameObject: {fileID: 1311203050}
   enemyPrefab: {fileID: 72369195435661660, guid: 208d1f82b7656c547a6eedf7dbc4fe65, type: 3}
+  enemySpawnPointGameObject: {fileID: 1311203050}
   enemyWaypoints:
   - {fileID: 1526783626}
   - {fileID: 45891218}
   - {fileID: 2086186601}
-  spawnEnemyCount: 5
+  enemySpawnCount: 5
+  enemySpawnTime: 1
 --- !u!4 &1309728896
 Transform:
   m_ObjectHideFlags: 0
@@ -2950,6 +2951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapManager: {fileID: 1949388541}
   inputManager: {fileID: 750899339}
+  currency: {fileID: 1588008620}
 --- !u!1 &1703723724
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class BuyInput : MonoBehaviour, IPointerClickHandler
 {
-    public TowerScriptableObject towerSO; 
+    public TowerData towerSO; 
 
     private InputManager inputManager;
 

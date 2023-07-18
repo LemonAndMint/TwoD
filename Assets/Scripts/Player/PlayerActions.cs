@@ -6,12 +6,14 @@ public class PlayerActions : MonoBehaviour
 {
     public MapManager mapManager;
     public InputManager inputManager;
+    public Currency currency;
 
-    public void BuyTower(TowerScriptableObject towerSO){
+    public void BuyTower(TowerData towerSO){
+
 
         bool isBought = mapManager.placeTower(towerSO.TowerPrefab);
 
-        if(isBought == true){ /* satin almayla ilgili bisiler yap */ }
+        if(isBought == true){ currency.loseGold(towerSO.TowerPrefab.GetComponent<TowerStats>().towerPrice); }
         
         inputManager.SetSpriteNull();
 

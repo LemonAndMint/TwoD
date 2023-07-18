@@ -8,6 +8,7 @@ using UnityEngine;
 public class TowerAttack : MonoBehaviour
 {
     public TowerStats towerStats;
+    public GameObject towerGFX;
     private GameObject targetEnemy;
     private float timer;
 
@@ -53,8 +54,6 @@ public class TowerAttack : MonoBehaviour
         if( _isInRange(tempEnemy) ){
 
             targetEnemy = tempEnemy;
-            //targetEnemy.GetComponent<EnemyHealth>().TakeDamage(towerStats.towerDamage); //#TODO Mermi atesle
-
             GameObject bullet = Instantiate(GetComponent<TowerStats>().bulletPrefab, new Vector3( transform.position.x, transform.position.y , 0 ),
                                                                                      Quaternion.identity);
             bullet.GetComponent<BulletStats>().SetBulletStats(GetComponent<TowerStats>().towerDamage, targetEnemy.transform);
@@ -83,14 +82,14 @@ public class TowerAttack : MonoBehaviour
 
     private void _rotateTo(){ //https://youtu.be/1Oda2M4BoNs?t=86 / Corpyr.
 
-        Vector3 look = transform.InverseTransformPoint(targetEnemy.transform.position);
+        Vector3 look = towerGFX.transform.InverseTransformPoint(targetEnemy.transform.position);
         float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg - 90;
 
-        transform.Rotate(0 , 0, angle); 
+        towerGFX.transform.Rotate(0 , 0, angle); 
 
     }
 
-    private void _resetRotation(){ transform.Rotate( 0, 0, 0 ); }
+    private void _resetRotation(){ towerGFX.transform.Rotate( 0, 0, 0 ); }
 
     private bool _isInRange(GameObject enemy){
 

@@ -15,7 +15,6 @@ public class MapManager : MonoBehaviour
     private Dictionary<TileBase, TileData> dataFromTiles;
     private Dictionary<Vector3Int, bool> isTowerPresented;
 
-
     private void Awake()
     {
         dataFromTiles = new Dictionary<TileBase, TileData>();
@@ -38,8 +37,6 @@ public class MapManager : MonoBehaviour
         TileData currentTileData = null;
         Vector3Int currentCoordinates;
 
-        //Debug.Log("center:" + map.localBounds.center + "   " + "max:" + map.localBounds.max + "    " + "min:" + map.localBounds.min ); //#TODO
-        
         for(int x = (int)map.localBounds.min.x; x < map.localBounds.max.x; x++ ){
 
             for(int y = (int)map.localBounds.min.y; y < map.localBounds.max.y; y++ ){
@@ -52,9 +49,6 @@ public class MapManager : MonoBehaviour
             }
 
         }
-
-
-        //Debug.Log(isTowerPresented.Count);
 
     }
 
@@ -77,7 +71,7 @@ public class MapManager : MonoBehaviour
              * +0.5f lik bir ekleme yapilir. \ Corpyr. 
              */
 
-            tempTower = Instantiate(towerPrefab); //#TODO baska bir kule varmi kontrolu yok \ Corpyr.
+            tempTower = Instantiate(towerPrefab); 
             
             Vector3 gridPositioninWorld = gridIntPosition + Vector3.one * 0.5f; 
             tempTower.transform.position = gridPositioninWorld;

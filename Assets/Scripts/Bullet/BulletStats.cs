@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletStats : MonoBehaviour
 {
     public float damageValue;
-    public float bulletSpeed;
+    public float bulletSpeed; //Inspectorden ayarlanmali \ Corpyr.
 
     /*
      * Property init alternatif cozum. Init setter unity'nin desteklemedigi bir .net 5 ozelligi. 
@@ -38,11 +38,10 @@ public class BulletStats : MonoBehaviour
         
     }
 
-    public void SetBulletStats(float damageValue, Transform targetTransform, float bulletSpeed = 4f){
+    public void SetBulletStats(float damageValue, Transform targetTransform){
 
         this.damageValue = damageValue;
         this._targetTransform = targetTransform;
-        this.bulletSpeed = bulletSpeed;
 
         _targetEnemyID = targetTransform.GetComponent<EnemyStats>().enemyInGameID; 
 

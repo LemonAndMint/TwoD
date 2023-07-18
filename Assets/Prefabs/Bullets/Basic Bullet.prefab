@@ -117,8 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageValue: 10
-  targetEnemyID: 0
-  targetTransform: {fileID: 0}
+  bulletSpeed: 10
 --- !u!114 &5406436964212774239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352a6b2b0994e2d44a9f68911db1a739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletStats: {fileID: 0}
 --- !u!114 &3965273786832663681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b41248a41387040909615f94fc1bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletStats: {fileID: 0}
