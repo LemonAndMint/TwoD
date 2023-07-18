@@ -2761,7 +2761,7 @@ MonoBehaviour:
   - {fileID: 1526783626}
   - {fileID: 45891218}
   - {fileID: 2086186601}
-  enemyCount: 5
+  spawnEnemyCount: 5
 --- !u!4 &1309728896
 Transform:
   m_ObjectHideFlags: 0
@@ -2949,7 +2949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapManager: {fileID: 1949388541}
-  inputManager: {fileID: 0}
+  inputManager: {fileID: 750899339}
 --- !u!1 &1703723724
 GameObject:
   m_ObjectHideFlags: 0

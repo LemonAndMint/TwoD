@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Basic Tower
   towerPrice: 5
-  towerRange: 5
+  towerRange: 10
   towerDamage: 10
   towerReloadSec: 1
   bulletPrefab: {fileID: 4917290689615946238, guid: a80930fa2f23e82418ac37b52b8b00ed, type: 3}
