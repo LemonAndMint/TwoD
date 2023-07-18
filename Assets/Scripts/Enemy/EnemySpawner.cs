@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public List<GameObject> enemyWaypoints;
 
-    public int enemyCount;
+    public int spawnEnemyCount;
 
     private Transform enemySpawnTransform;
 
@@ -30,13 +30,13 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject tempEnemy;
 
-        for(int i = 0; i < enemyCount; i++){
+        for(int i = 0; i < spawnEnemyCount - 1; i++){
 
             tempEnemy = Instantiate(enemyPrefab, enemySpawnTransform);
-            
-            tempEnemy.GetComponent<EnemyMovement>().waypoints = enemyWaypoints;
-
             tempEnemy.transform.parent = null;
+
+            tempEnemy.GetComponent<EnemyStats>().SetEnemyStats(i + 1); //#FIXME? tum objeler tek bir noktadan deger almali? EnemyConstructor gibi? \ Corpyr.
+            tempEnemy.GetComponent<EnemyMovement>().waypoints = enemyWaypoints;
 
             yield return new WaitForSeconds(2f);
 
