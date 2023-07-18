@@ -8,7 +8,6 @@ using UnityEngine;
 public class TowerAttack : MonoBehaviour
 {
     public TowerStats towerStats;
-    
     private GameObject targetEnemy;
     private float timer;
 
@@ -36,7 +35,7 @@ public class TowerAttack : MonoBehaviour
         }
         else{
 
-            _attack();
+            _shoot();
             timer = towerStats.towerReloadSec;
 
         }
@@ -45,7 +44,7 @@ public class TowerAttack : MonoBehaviour
 
     }
 
-    void _attack(){
+    void _shoot(){
 
         GameObject tempEnemy;
 
@@ -54,7 +53,11 @@ public class TowerAttack : MonoBehaviour
         if( _isInRange(tempEnemy) ){
 
             targetEnemy = tempEnemy;
-            targetEnemy.GetComponent<EnemyHealth>().TakeDamage(towerStats.towerDamage); //#TODO Mermi atesle
+            //targetEnemy.GetComponent<EnemyHealth>().TakeDamage(towerStats.towerDamage); //#TODO Mermi atesle
+
+            GameObject bullet = Instantiate(GetComponent<TowerStats>().bulletPrefab, new Vector3( transform.position.x, transform.position.y , 0 ),
+                                                                                     Quaternion.identity);
+            bullet.GetComponent<BulletStats>().SetBulletStats(GetComponent<TowerStats>().towerDamage, targetEnemy.transform);
 
         }
 
@@ -88,8 +91,6 @@ public class TowerAttack : MonoBehaviour
     }
 
     private void _resetRotation(){ transform.Rotate( 0, 0, 0 ); }
-
- 
 
     private bool _isInRange(GameObject enemy){
 
