@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemySpawnPointGameObject;
     public GameObject enemyPrefab;
+    public GameObject enemySpawnPointGameObject;
     public List<GameObject> enemyWaypoints;
 
-    public int spawnEnemyCount;
+    public int enemySpawnCount;
+    public float enemySpawnTime;
 
     private Transform enemySpawnTransform;
 
@@ -22,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void Spawn(){
 
-        StartCoroutine(_spawn ());
+        StartCoroutine(_spawn());
 
     }
 
@@ -30,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject tempEnemy;
 
-        for(int i = 0; i < spawnEnemyCount - 1; i++){
+        for(int i = 0; i < enemySpawnCount - 1; i++){
 
             tempEnemy = Instantiate(enemyPrefab, enemySpawnTransform);
             tempEnemy.transform.parent = null;
@@ -38,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
             tempEnemy.GetComponent<EnemyStats>().SetEnemyStats(i + 1); //#FIXME? tum objeler tek bir noktadan deger almali? EnemyConstructor gibi? \ Corpyr.
             tempEnemy.GetComponent<EnemyMovement>().waypoints = enemyWaypoints;
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(enemySpawnTime);
 
         }
 
