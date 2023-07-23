@@ -18,7 +18,12 @@ public class PlayerActions : MonoBehaviour
         inputManager.SetSpriteNull();
 
     }
-    public void SellTower(){}
+    public void SellTower(int towerInGameID){
+
+        
+
+
+    }
     public void UpgradeTower(){}
     public void PlaceTower(){}
     public void BuyCancelTower(){}

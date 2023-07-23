@@ -19,4 +19,8 @@ public class TowerStats : MonoBehaviour
         private set{ }
 
     }
+
+
+    //#TODO tower stats olusturma yapilmali \ Corpyr.
+
 }
