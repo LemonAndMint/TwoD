@@ -15,8 +15,8 @@ public class UIImagePrepare : MonoBehaviour
     void Start()
     {
 
-        towerNameText.text = towerPrefab.GetComponent<TowerStats>().towerName;
-        towerPriceText.text = towerPrefab.GetComponent<TowerStats>().towerPrice.ToString();
+        towerNameText.text = towerPrefab.GetComponent<TowerStats>().entityName; //#FIXME
+        towerPriceText.text = towerPrefab.GetComponent<TowerStats>().entityPrice.ToString();
 
     }
    

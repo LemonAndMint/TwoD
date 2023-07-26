@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 72369195435661661}
   - component: {fileID: -803028423658091420}
   - component: {fileID: 3722104120248234797}
-  - component: {fileID: 6703021899469744021}
   - component: {fileID: -8647349695528479221}
+  - component: {fileID: 6703021899469744021}
   - component: {fileID: -3050216773027591196}
   m_Layer: 0
   m_Name: Enemy
@@ -136,20 +136,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6703021899469744021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72369195435661660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4087ab8979aba84b9438fae9a8e0fd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: -8647349695528479221}
-  waypoints: []
 --- !u!114 &-8647349695528479221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +150,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 100
   enemyMoveSpeed: 1.25
+--- !u!114 &6703021899469744021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72369195435661660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4087ab8979aba84b9438fae9a8e0fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: -8647349695528479221}
+  waypoints: []
 --- !u!114 &-3050216773027591196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,4 +176,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0975c26ccb6d03947b9e25ea7c1887a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStats: {fileID: 0}
+  enemyStats: {fileID: -8647349695528479221}

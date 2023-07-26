@@ -2935,8 +2935,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d868e16026374d43bb371b3397775a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapManager: {fileID: 0}
-  inputManager: {fileID: 0}
+  mapManager: {fileID: 338896530}
+  inputManager: {fileID: 338896529}
   currency: {fileID: 1588008620}
 --- !u!1 &1703723724
 GameObject:

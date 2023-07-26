@@ -13,7 +13,7 @@ public class PlayerActions : MonoBehaviour
 
         bool isBought = mapManager.placeTower(towerSO.TowerPrefab);
 
-        if(isBought == true){ currency.loseGold(towerSO.TowerPrefab.GetComponent<TowerStats>().towerPrice); }
+        if(isBought == true){ currency.loseGold(towerSO.TowerPrefab.GetComponent<TowerStats>().entityPrice); } //#FIXME \ Corpyr.
         
         inputManager.SetSpriteNull();
 

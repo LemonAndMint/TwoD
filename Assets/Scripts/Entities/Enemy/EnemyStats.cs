@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour
+public class EnemyStats : Stats
 {
     public float enemyHealth;
     public float enemyMoveSpeed;
 
-    private int _enemyInGameID;
     public int enemyInGameID 
     { 
-        get{ return _enemyInGameID; }
+        get{ return _entityInGameID; }
 
         private set{ }
 
@@ -21,13 +20,13 @@ public class EnemyStats : MonoBehaviour
         this.enemyHealth = enemyHealth;
         this.enemyMoveSpeed = enemyMoveSpeed;
 
-        this._enemyInGameID = enemyInGameID;
+        this._entityInGameID = enemyInGameID;
 
     }    
 
     public void SetEnemyStats(int enemyInGameID){
 
-        this._enemyInGameID = enemyInGameID;
+        this._entityInGameID = enemyInGameID;
 
     }    
 

@@ -36,6 +36,8 @@ public class EnemySpawner : MonoBehaviour
             tempEnemy = Instantiate(enemyPrefab, enemySpawnTransform);
             tempEnemy.transform.parent = null;
 
+            EntityStorage.Instance.AddToStorage<EnemyStats>(StorageType.Enemy, tempEnemy.GetComponent<EnemyStats>());
+
             tempEnemy.GetComponent<EnemyStats>().SetEnemyStats(i + 1); //#FIXME? tum objeler tek bir noktadan deger almali? EnemyConstructor gibi? \ Corpyr.
             tempEnemy.GetComponent<EnemyMovement>().waypoints = enemyWaypoints;
 

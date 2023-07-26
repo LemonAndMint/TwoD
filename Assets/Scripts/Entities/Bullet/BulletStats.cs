@@ -47,7 +47,7 @@ public class BulletStats : MonoBehaviour
 
     }
 
-    public void DestroyBullet(){ //#FIXME? baska bir sinifta yazilabilir mi? \ Corpyr.
+    public void DestroyBullet(){ 
 
         Destroy(this.gameObject);
 
