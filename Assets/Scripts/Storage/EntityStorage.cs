@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Utility;
 
 public class EntityStorage : Storage
 {
@@ -50,18 +51,22 @@ public class EntityStorage : Storage
 
     }
     
-    public void AddToStorage<T>(StorageType storageType, T item) where T : Stats{
+    public void AddToStorage<T>(T item) where T : StorableStats{
 
         if(typeof(T) == typeof(TowerStats)){
 
-            _inGameTowerList.Add((TowerStats)(Stats)item); //?????????????????????????????? \ Corpyr.
+            StorageUtility.GiveIDtoItem<TowerStats>(_inGameTowerList, (TowerStats)(StorableStats)item);
+            _inGameTowerList.Add((TowerStats)(StorableStats)item); 
+
 
         }
         else if(typeof(T) == typeof(EnemyStats)){
 
-            _inGameEnemyList.Add((EnemyStats)(Stats)item);
+            StorageUtility.GiveIDtoItem<EnemyStats>(_inGameEnemyList, (EnemyStats)(StorableStats)item);
+            _inGameEnemyList.Add((EnemyStats)(StorableStats)item);
 
         }
+
 
     }
 

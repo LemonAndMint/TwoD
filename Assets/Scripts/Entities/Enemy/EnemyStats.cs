@@ -2,31 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStats : Stats
+public class EnemyStats : StorableStats 
 {
     public float enemyHealth;
     public float enemyMoveSpeed;
 
     public int enemyInGameID 
     { 
-        get{ return _entityInGameID; }
+        get{ return GetInGameID(); }
 
         private set{ }
 
     }
 
-    public void SetEnemyStats(float enemyHealth, float enemyMoveSpeed, int enemyInGameID){
+    public void SetEnemyStats(float enemyHealth, float enemyMoveSpeed){
 
         this.enemyHealth = enemyHealth;
         this.enemyMoveSpeed = enemyMoveSpeed;
-
-        this._entityInGameID = enemyInGameID;
-
-    }    
-
-    public void SetEnemyStats(int enemyInGameID){
-
-        this._entityInGameID = enemyInGameID;
 
     }    
 

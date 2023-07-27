@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletStats : MonoBehaviour
+public class BulletStats : NonStorableStats
 {
     public float damageValue;
     public float bulletSpeed; //Inspectorden ayarlanmali \ Corpyr.

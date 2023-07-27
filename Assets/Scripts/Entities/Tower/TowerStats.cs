@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerStats : Stats
+public class TowerStats : StorableStats 
 {
     public float towerRange;
     public float towerDamage;
