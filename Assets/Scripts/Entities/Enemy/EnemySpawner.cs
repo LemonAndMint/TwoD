@@ -17,27 +17,44 @@ public class EnemySpawner : MonoBehaviour
     {
 
         enemySpawnTransform = enemySpawnPointGameObject.transform;
-        Spawn();
+        _spawn();
 
     }
 
-    public void Spawn(){
+    private void Update() {
+        
+        if(Input.GetKeyDown(KeyCode.S) == true){
 
-        StartCoroutine(_spawn());
+            SpawnEnemy();
+
+        }
 
     }
 
-    IEnumerator _spawn(){
+    private void _spawn(){
+
+        StartCoroutine(_IEspawn());
+
+    }
+
+    public void SpawnEnemy(){ //# Isim degistirmeli miyiz? \ Corpyr.
 
         GameObject tempEnemy;
 
+        tempEnemy = Instantiate(enemyPrefab, enemySpawnTransform);
+        tempEnemy.transform.parent = null;
+
+        EntityStorage.Instance.AddToStorage<EnemyStats>(tempEnemy.GetComponent<EnemyStats>());
+        tempEnemy.GetComponent<EnemyMovement>().waypoints = enemyWaypoints; //#FIXME waypoint atama farkli yerde olabilir. 
+
+    }
+
+    IEnumerator _IEspawn(){
+
+
         for(int i = 0; i < enemySpawnCount - 1; i++){
 
-            tempEnemy = Instantiate(enemyPrefab, enemySpawnTransform);
-            tempEnemy.transform.parent = null;
-
-            EntityStorage.Instance.AddToStorage<EnemyStats>(tempEnemy.GetComponent<EnemyStats>());
-            tempEnemy.GetComponent<EnemyMovement>().waypoints = enemyWaypoints; //#FIXME waypoint atama farkli yerde olabilir. 
+            SpawnEnemy();
 
             yield return new WaitForSeconds(enemySpawnTime);
 

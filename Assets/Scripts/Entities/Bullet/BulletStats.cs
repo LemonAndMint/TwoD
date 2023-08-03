@@ -43,7 +43,7 @@ public class BulletStats : NonStorableStats
         this.damageValue = damageValue;
         this._targetTransform = targetTransform;
 
-        _targetEnemyID = targetTransform.GetComponent<EnemyStats>().enemyInGameID; 
+        _targetEnemyID = targetTransform.GetComponent<EnemyStats>().GetInGameID(); 
 
     }
 

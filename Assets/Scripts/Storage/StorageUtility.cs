@@ -10,43 +10,43 @@ namespace Utility{
     {
 
         /*
-         * #FIXME Sadece EntityStorage erisebilir olmali ama onunla kardeslik kurmadan. \ Corpyr.
+         * #FIXME Sadece EntityStorage erisebilir olmali ama ona baglantili olmadan. \ Corpyr.
          */
 
         ///<summary> Verilen itemin verilen listede olup olmadigini kontrol eder ardindan  
         /// listede atanmamis en dusuk id degerini itemin Stats degerine atar. </summary> 
-        public static void GiveIDtoItem<T>(List<T> storageList, T newItem)  where T : StorableStats{ 
+        public static void GiveMinID<T>(List<T> storageList, T newItem)  where T : StorableStats{ 
 
-            if(storageList.Contains(newItem)){
+            int id = _mintUnasinedID(storageList.ToList<StorableStats>());
+            newItem.SetInGameID(id);
 
-                int id = _getUnasinedID(storageList.ToList<StorableStats>());
-                newItem.SetInGameID(id);
-
-            }
+            Debug.Log("id value :" + id);
 
         }
 
-        private static int _getUnasinedID(List<StorableStats> storageList){
+        private static int _mintUnasinedID(List<StorableStats> storageList){
 
-            List<int> idList = storageList.Select(x => x.GetInGameID()).OrderByDescending( x => x).ToList();
-            int smallestIDinList = idList.First();
+            List<int> idList = storageList.Select(x => x.GetInGameID()).OrderBy( x => x ).ToList();
+            int currentIdinList = 0;
 
-            if( smallestIDinList > 0 ){
+            foreach(int id in idList){
 
-                return smallestIDinList - 1;
+                if(currentIdinList == id){
+
+                    currentIdinList++;
+                    continue;
+
+                }
+                else {
+
+                    break;
+
+                }
+
 
             }
-            else if ( smallestIDinList == 0 ){
 
-                return idList.Last() + 1;
-
-            }
-            else{
-
-                Debug.Log(" StorageUtility _getUnasinedID id degeri negatif! Id degeri: " + smallestIDinList);
-                return -1;
-
-            }
+            return currentIdinList;
 
         }
     }

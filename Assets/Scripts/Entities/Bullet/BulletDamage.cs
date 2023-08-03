@@ -18,7 +18,7 @@ public class BulletDamage : MonoBehaviour
         
         if(other.tag == "Enemy" && other.GetComponent<EnemyStats>() != null && 
                                    other.GetComponent<EnemyHealth>() != null && 
-                                   other.GetComponent<EnemyStats>().enemyInGameID == GetComponent<BulletStats>().targetEnemyID){
+                                   other.GetComponent<EnemyStats>().GetInGameID() == GetComponent<BulletStats>().targetEnemyID){
 
             other.GetComponent<EnemyHealth>().TakeDamage(bulletStats.damageValue);
 

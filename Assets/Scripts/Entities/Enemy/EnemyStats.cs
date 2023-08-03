@@ -7,13 +7,13 @@ public class EnemyStats : StorableStats
     public float enemyHealth;
     public float enemyMoveSpeed;
 
-    public int enemyInGameID 
+    /*public int enemyInGameID 
     { 
         get{ return GetInGameID(); }
 
         private set{ }
 
-    }
+    }*/
 
     public void SetEnemyStats(float enemyHealth, float enemyMoveSpeed){
 

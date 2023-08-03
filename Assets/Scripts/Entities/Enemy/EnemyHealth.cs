@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+public class OnDieEvent : UnityEvent<EnemyStats>{ }
 
 [RequireComponent(typeof(EnemyStats))]
 public class EnemyHealth : MonoBehaviour
 {
+    public OnDieEvent onDie;
     public EnemyStats enemyStats;
 
-    private void Start() {
+    private void Awake() {
         
         enemyStats = GetComponent<EnemyStats>();
+        onDie = new OnDieEvent();
 
     }
 
@@ -32,7 +37,14 @@ public class EnemyHealth : MonoBehaviour
 
     private void _die(){
 
+        onDie.Invoke(GetComponent<EnemyStats>());
         Destroy(this.gameObject);
+
+    }
+
+    private void OnDestroy() {
+        
+        onDie.Invoke(GetComponent<EnemyStats>());
 
     }
 
