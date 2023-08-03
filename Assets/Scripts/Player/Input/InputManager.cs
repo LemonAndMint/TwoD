@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour //MonoBehavior olmali mi? Sade C# kodu da olabilir. \ Corpyr. 
+public class InputManager : MonoBehaviour
 {
 
     public PlayerActions playerActions;
-    public static InputManager instance; //#FIXME Private olnali, her component degistirebilir. \ Corpyr.
     public static Vector2 crusorPosInScreen;
 
     [SerializeField]
@@ -15,12 +14,24 @@ public class InputManager : MonoBehaviour //MonoBehavior olmali mi? Sade C# kodu
     private TowerData _placingTowerSO;
     private Vector3 _crusorPosInGame;
 
+    public static InputManager instance;
+
+    public static InputManager Instance {
+
+        get {
+
+            return instance;
+        }
+
+        set { }
+
+    }
 
     private void Awake() {
 
         if(instance == null){
 
-            instance = this; //Classin singleton kismi \ Corpyr.
+            instance = this;
 
             SetSpriteNull();
 
@@ -75,8 +86,6 @@ public class InputManager : MonoBehaviour //MonoBehavior olmali mi? Sade C# kodu
         }
 
     }
-
-    
 
     public void SetSpriteNull(){
 

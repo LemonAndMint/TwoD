@@ -10,18 +10,17 @@ public class PlayerActions : MonoBehaviour
 
     public void BuyTower(TowerData towerSO){
 
+        GameObject towerGO = mapManager.placeTower(towerSO.TowerPrefab);
+        EntityStorage.Instance.AddToStorage<TowerStats>(towerGO.GetComponent<TowerStats>());
 
-        bool isBought = mapManager.placeTower(towerSO.TowerPrefab);
-
-        if(isBought == true){ currency.loseGold(towerSO.TowerPrefab.GetComponent<TowerStats>().entityPrice); } //#FIXME \ Corpyr.
+        if(towerGO != null){ currency.loseGold(towerGO.GetComponent<TowerStats>().entityPrice); } //#FIXME \ Corpyr.
         
         inputManager.SetSpriteNull();
 
     }
     public void SellTower(int towerInGameID){
 
-        
-
+        EntityStorage.Instance.RemoveFromStorage<TowerStats>(towerInGameID);
 
     }
     public void UpgradeTower(){}

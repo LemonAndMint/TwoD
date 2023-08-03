@@ -8,6 +8,11 @@ namespace Utility{
 
     public static class StorageUtility
     {
+        public static T FindStat<T>(List<T> storageList, int id) where T : StorableStats{
+
+            return storageList.Select( k => { if(k.GetInGameID() == id) { return k; } return null; }).ToList().First();
+
+        }
 
         /*
          * #FIXME Sadece EntityStorage erisebilir olmali ama ona baglantili olmadan. \ Corpyr.

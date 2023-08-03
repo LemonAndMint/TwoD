@@ -6,6 +6,7 @@ using Utility;
 
 public class EntityStorage : Storage
 {
+    [SerializeField]
     private List<TowerStats> _inGameTowerList;
     [SerializeField]
     private List<EnemyStats> _inGameEnemyList;
@@ -41,6 +42,7 @@ public class EntityStorage : Storage
         if( instance == null ){
 
             instance = this;
+            _setupLists();
             DontDestroyOnLoad(gameObject);
 
         }
@@ -49,6 +51,13 @@ public class EntityStorage : Storage
             Destroy(gameObject);
 
         }
+
+    }
+
+    private void _setupLists(){
+
+        _inGameTowerList = new List<TowerStats>();
+        _inGameEnemyList = new List<EnemyStats>();
 
     }
     
@@ -73,7 +82,7 @@ public class EntityStorage : Storage
 
     }
 
-    public void RemoveFromStorage<T>(T item) where T : StorableStats{
+    public void RemoveFromStorage<T>(T item) where T : StorableStats{ //#FIXME? Sadece id ile mi olmalı?
 
         if(typeof(T) == typeof(TowerStats)){
 
@@ -83,6 +92,21 @@ public class EntityStorage : Storage
         else if(typeof(T) == typeof(EnemyStats)){
 
            _inGameEnemyList.Remove((EnemyStats)(StorableStats)item);
+
+        }
+
+    }
+
+    public void RemoveFromStorage<T>(int id) where T : StorableStats{
+
+        if(typeof(T) == typeof(TowerStats)){
+
+            _inGameTowerList.Remove(StorageUtility.FindStat<TowerStats>(_inGameTowerList, id));
+
+        }
+        else if(typeof(T) == typeof(EnemyStats)){
+
+           _inGameEnemyList.Remove(StorageUtility.FindStat<EnemyStats>(_inGameEnemyList, id));
 
         }
 

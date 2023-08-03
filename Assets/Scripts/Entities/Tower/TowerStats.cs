@@ -9,16 +9,6 @@ public class TowerStats : StorableStats
     public float towerReloadSec;
     public GameObject bulletPrefab;
 
-    public int towerInGameID 
-    {
-
-        get{ return _entityInGameID; }
-
-        private set{ }
-
-    }
-
-
     //#TODO tower stats olusturma yapilmali \ Corpyr.
 
 }

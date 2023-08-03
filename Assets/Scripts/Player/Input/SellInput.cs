@@ -11,14 +11,14 @@ public class SellInput : MonoBehaviour
     void Start()
     {
         towerStats = GetComponent<TowerStats>();
-        inputManager = InputManager.instance;
+        inputManager = InputManager.Instance;
     }
 
     public void SellEvent(){
 
-        inputManager.SellInput(towerStats.towerInGameID);
+        inputManager.SellInput(towerStats.GetInGameID());
+        Destroy(gameObject);
 
     }
-
 
 }

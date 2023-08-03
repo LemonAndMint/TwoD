@@ -12,7 +12,7 @@ public class BuyInput : MonoBehaviour, IPointerClickHandler
 
     private void Awake() {
 
-        inputManager = FindObjectOfType<InputManager>();
+        inputManager = InputManager.Instance;
 
     }
 

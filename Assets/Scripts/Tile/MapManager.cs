@@ -51,7 +51,7 @@ public class MapManager : MonoBehaviour
     }
 
     
-    public bool placeTower(GameObject towerPrefab){
+    public GameObject placeTower(GameObject towerPrefab){
 
         Vector2 placingPoint = InputManager.crusorPosInScreen;
 
@@ -76,11 +76,11 @@ public class MapManager : MonoBehaviour
 
             isTowerPresented[gridIntPosition] = true;
 
-            return true;
+            return tempTower;
 
         }
 
-        return false;
+        return null;
 
     }
 
