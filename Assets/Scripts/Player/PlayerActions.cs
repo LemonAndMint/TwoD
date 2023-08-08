@@ -6,21 +6,36 @@ public class PlayerActions : MonoBehaviour
 {
     public MapManager mapManager;
     public InputManager inputManager;
+    public EntityStorage entityStorage;
+
     public Currency currency;
+
+    private void Start() {
+        
+        inputManager = InputManager.Instance;
+        entityStorage = EntityStorage.Instance;
+
+    }
 
     public void BuyTower(TowerData towerSO){
 
         GameObject towerGO = mapManager.placeTower(towerSO.TowerPrefab);
-        EntityStorage.Instance.AddToStorage<TowerStats>(towerGO.GetComponent<TowerStats>());
 
-        if(towerGO != null){ currency.loseGold(towerGO.GetComponent<TowerStats>().entityPrice); } //#FIXME \ Corpyr.
+        towerGO.GetComponent<TowerEventHandler>().onSell.AddListener(SellTower);
+        entityStorage.AddToStorage<TowerStats>(towerGO.GetComponent<TowerStats>());
+        currency.loseGold(towerGO.GetComponent<TowerStats>().entityPrice); 
         
-        inputManager.SetSpriteNull();
+        inputManager.SetSpriteNull(); //#FIXME \ Corpyr.
 
     }
     public void SellTower(int towerInGameID){
 
-        EntityStorage.Instance.RemoveFromStorage<TowerStats>(towerInGameID);
+        TowerStats towerStats = entityStorage.GetStat<TowerStats>(towerInGameID);
+        GameObject towerGO = towerStats.gameObject;
+        
+        currency.gainGold(towerStats.entityPrice);
+        entityStorage.RemoveFromStorage<TowerStats>(towerInGameID);
+        Destroy(towerGO);
 
     }
     public void UpgradeTower(){}

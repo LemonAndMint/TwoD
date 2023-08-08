@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5404358384771065923}
   - component: {fileID: -7806080639301507080}
   - component: {fileID: 1574687791151895697}
-  - component: {fileID: 6294260104874143536}
   - component: {fileID: 5027797304188520325}
+  - component: {fileID: 6294260104874143536}
   m_Layer: 0
   m_Name: Basic Tower 1
   m_TagString: Untagged
@@ -97,6 +97,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerStats: {fileID: -7806080639301507080}
   towerGFX: {fileID: 3338445182692797365}
+--- !u!114 &5027797304188520325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575011211820214153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151828d73f956ae4aa3a8c5e7623023f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSell:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6294260104874143536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,19 +126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Canvas: {fileID: 7824684909429292360}
   SelectionSquare: {fileID: 2972834423681885896}
---- !u!114 &5027797304188520325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1575011211820214153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ad06d5e5c740c4eab1af9c634544b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputManager: {fileID: 0}
 --- !u!1 &2972834423681885896
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,11 +424,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4410317726621810715, guid: ededd49039786964f8cf23a67e3fc5b6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SellEvent
+      value: invokeSell
       objectReference: {fileID: 0}
     - target: {fileID: 4410317726621810715, guid: ededd49039786964f8cf23a67e3fc5b6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SellInput, Assembly-CSharp
+      value: TowerEventHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4410317726621810715, guid: ededd49039786964f8cf23a67e3fc5b6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

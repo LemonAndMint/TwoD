@@ -56,7 +56,7 @@ public class TowerAttack : MonoBehaviour
             targetEnemy = tempEnemy;
             GameObject bullet = Instantiate(GetComponent<TowerStats>().bulletPrefab, new Vector3( transform.position.x, transform.position.y , 0 ),
                                                                                      Quaternion.identity);
-            bullet.GetComponent<BulletStats>().SetBulletStats(GetComponent<TowerStats>().towerDamage, targetEnemy.transform);
+            bullet.GetComponent<BulletStats>().SetBulletStats(towerStats.towerDamage, targetEnemy.transform);
 
         }
 
@@ -68,7 +68,7 @@ public class TowerAttack : MonoBehaviour
 
         tempEnemy = _getNearestEnemy();
         
-        if( _isInRange(tempEnemy) ){
+        if( tempEnemy != null && _isInRange(tempEnemy) ){
 
             targetEnemy = tempEnemy;
 

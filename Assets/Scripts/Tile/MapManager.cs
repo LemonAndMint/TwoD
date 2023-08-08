@@ -51,7 +51,7 @@ public class MapManager : MonoBehaviour
     }
 
     
-    public GameObject placeTower(GameObject towerPrefab){
+    public GameObject placeTower(GameObject towerPrefab){ //#FIXME Kule yerlestirmek map managerin gorevi degil \ Corpyr.
 
         Vector2 placingPoint = InputManager.crusorPosInScreen;
 

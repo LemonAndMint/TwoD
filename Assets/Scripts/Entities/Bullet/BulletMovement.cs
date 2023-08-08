@@ -35,7 +35,11 @@ public class BulletMovement : MonoBehaviour
         else{
 
             transform.position = Vector3.MoveTowards(transform.position, targetLastPosition, Time.deltaTime * bulletStats.bulletSpeed);
+            
+            if( Vector3.Distance(transform.position, targetLastPosition) < 0.05f ){
 
+                bulletStats.DestroyBullet();
+            }
         }
 
     }

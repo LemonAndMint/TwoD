@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Storage : MonoBehaviour
+public interface IStorage
 {
    
     //public void AddToStorage<T>(StorageType storageType, T item) where T : Stats{}

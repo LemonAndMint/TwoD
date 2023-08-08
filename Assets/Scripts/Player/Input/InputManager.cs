@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-
     public PlayerActions playerActions;
     public static Vector2 crusorPosInScreen;
 
@@ -14,12 +13,11 @@ public class InputManager : MonoBehaviour
     private TowerData _placingTowerSO;
     private Vector3 _crusorPosInGame;
 
-    public static InputManager instance;
-
+    private static InputManager instance;
     public static InputManager Instance {
 
         get {
-
+            //#TODO eger instance object yoksa olustur. \ Corpyr,
             return instance;
         }
 
@@ -54,9 +52,9 @@ public class InputManager : MonoBehaviour
 
     }
 
-    public void SellInput(int towerInGameID){
+    public void SellTowerInput(int inGameID){ 
 
-        playerActions.SellTower(towerInGameID);
+        playerActions.SellTower(inGameID);
 
     }
 

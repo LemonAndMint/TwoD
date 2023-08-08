@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using Utility;
 
-public class EntityStorage : Storage
+public class EntityStorage : MonoBehaviour, IStorage  
 {
     [SerializeField]
     private List<TowerStats> _inGameTowerList;
@@ -68,8 +68,6 @@ public class EntityStorage : Storage
             StorageUtility.GiveMinID<TowerStats>(_inGameTowerList, (TowerStats)(StorableStats)item);
             _inGameTowerList.Add((TowerStats)(StorableStats)item); 
 
-
-
         }
         else if(typeof(T) == typeof(EnemyStats)){
 
@@ -109,6 +107,23 @@ public class EntityStorage : Storage
            _inGameEnemyList.Remove(StorageUtility.FindStat<EnemyStats>(_inGameEnemyList, id));
 
         }
+
+    }
+
+    public T GetStat<T>(int id) where T : StorableStats{
+
+        if(typeof(T) == typeof(TowerStats)){
+
+            return (T)(object)StorageUtility.FindStat<TowerStats>(_inGameTowerList, id);
+
+        }
+        else if(typeof(T) == typeof(EnemyStats)){
+
+            return (T)(object)StorageUtility.FindStat<EnemyStats>(_inGameEnemyList, id);
+
+        }
+
+        return null;
 
     }
 
