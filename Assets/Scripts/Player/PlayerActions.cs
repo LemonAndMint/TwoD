@@ -6,14 +6,14 @@ public class PlayerActions : MonoBehaviour
 {
     public MapManager mapManager;
     public InputManager inputManager;
-    public EntityStorage entityStorage;
+    public Storage<TowerStats> towerStorage;
 
     public Currency currency;
 
     private void Start() {
         
         inputManager = InputManager.Instance;
-        entityStorage = EntityStorage.Instance;
+        towerStorage = Storage<TowerStats>.Instance;
 
     }
 
@@ -22,7 +22,7 @@ public class PlayerActions : MonoBehaviour
         GameObject towerGO = mapManager.placeTower(towerSO.TowerPrefab);
 
         towerGO.GetComponent<TowerEventHandler>().onSell.AddListener(SellTower);
-        entityStorage.AddToStorage<TowerStats>(towerGO.GetComponent<TowerStats>());
+        towerStorage.AddToStorage(towerGO.GetComponent<TowerStats>());
         currency.loseGold(towerGO.GetComponent<TowerStats>().entityPrice); 
         
         inputManager.SetSpriteNull(); //#FIXME \ Corpyr.
@@ -30,11 +30,11 @@ public class PlayerActions : MonoBehaviour
     }
     public void SellTower(int towerInGameID){
 
-        TowerStats towerStats = entityStorage.GetStat<TowerStats>(towerInGameID);
+        TowerStats towerStats = towerStorage.GetItem(towerInGameID);
         GameObject towerGO = towerStats.gameObject;
         
         currency.gainGold(towerStats.entityPrice);
-        entityStorage.RemoveFromStorage<TowerStats>(towerInGameID);
+        towerStorage.RemoveFromStorage(towerInGameID);
         Destroy(towerGO);
 
     }

@@ -44,7 +44,8 @@ public class EnemySpawner : MonoBehaviour
         tempEnemy = Instantiate(enemyPrefab, enemySpawnTransform);
         tempEnemy.transform.parent = null;
 
-        EntityStorage.Instance.AddToStorage<EnemyStats>(tempEnemy.GetComponent<EnemyStats>());
+        Storage<EnemyStats>.Instance.AddToStorage(tempEnemy.GetComponent<EnemyStats>());
+        tempEnemy.GetComponent<EnemyHealth>().onDie.AddListener(Storage<EnemyStats>.Instance.RemoveFromStorage);
         tempEnemy.GetComponent<EnemyMovement>().waypoints = enemyWaypoints; //#FIXME waypoint atama farkli yerde olabilir. 
 
     }

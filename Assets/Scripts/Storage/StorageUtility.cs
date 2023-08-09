@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-
 namespace Utility{
 
     public static class StorageUtility
@@ -14,22 +13,18 @@ namespace Utility{
 
         }
 
-        /*
-         * #FIXME Sadece EntityStorage erisebilir olmali ama ona baglantili olmadan. \ Corpyr.
-         */
 
         ///<summary> Verilen itemin verilen listede olup olmadigini kontrol eder ardindan  
         /// listede atanmamis en dusuk id degerini itemin Stats degerine atar. </summary> 
-        public static void GiveMinID<T>(List<T> storageList, T newItem)  where T : StorableStats{ 
+        public static int GetMinID<T>(List<T> storageList, T newItem) where T : StorableStats{ 
 
-            int id = _mintUnasinedID(storageList.ToList<StorableStats>());
-            newItem.SetInGameID(id);
+            int id = _mintUnasinedID<T>(storageList.ToList());
 
-            Debug.Log("id value :" + id);
+            return id;
 
         }
 
-        private static int _mintUnasinedID(List<StorableStats> storageList){
+        private static int _mintUnasinedID<T>(List<T> storageList) where T : StorableStats{
 
             List<int> idList = storageList.Select(x => x.GetInGameID()).OrderBy( x => x ).ToList();
             int currentIdinList = 0;
@@ -42,12 +37,7 @@ namespace Utility{
                     continue;
 
                 }
-                else {
-
-                    break;
-
-                }
-
+                else { break; }
 
             }
 
